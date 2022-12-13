@@ -1,8 +1,7 @@
 ﻿/*
-Задайте одномерный массив, заполненный случайными числами.
- Найдите сумму элементов, стоящих на нечётных позициях.
-[3, 7, 23, 12] -> 19
-[-4, -6, 89, 6] -> 0
+Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива.
+
+[3 7 22 2 78] -> 76
 */
 
 // Получить размерность массива с консоли
@@ -28,20 +27,20 @@ int GetNumber(string message)
 
 // Получить заполненный массив рандомными числами
 
-int[] InitArray(int dimension )
+double[] InitArray(int dimension )
 {
-    int[] array = new int[dimension];
+    double[] array = new double[dimension];
     Random rnd = new Random();
 
-    for (int i = 0; i < dimension; i++)
+    for (int i = 0; i < dimension; i++) 
     {
-        array[i] = rnd.Next(1, 10);
+        array[i] = rnd.Next();
     }
     return array;
 }
 // распечатать массив на консоль
 
-void PrintArray(int[] array)
+void PrintArray(double[] array)
 {
     for (int i = 0; i < array.Length; i++)
     {
@@ -50,17 +49,75 @@ void PrintArray(int[] array)
     System.Console.WriteLine();
 }
 
-int[] array = InitArray(GetNumber("Введите число"));
+double[] array = InitArray(GetNumber("Введите число"));
 PrintArray(array);
 
-int sum = 0;
+double min = array[0];
+double max = array[0];
 for (int i = 0; i < array.Length; i++)
 {
-    
-    if (i % 2 != 0)
+    if (min > array[i])
     {
-        sum = sum + array[i];
+        min = array[i];
+    }
+    if (max < array[i])
+    {
+        max = array[i];
     }
 
 }
-System.Console.WriteLine($"Сумма элементов, стоящих на нечетных позициях =  {sum}");
+double diff = max - min;
+System.Console.WriteLine($"Максимальный элемент массива  = {max}, минимальный элемент массива = {min}, разница между ними составляет =  {diff} ");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+int MinMaxNumbers(int minNum, int maxNum)
+{
+    int min = array[0];
+    int max = array[0];
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (min > array[i])
+        {
+            min = array[i];
+        }
+        return min;
+        if (maxNum < array[i])
+        {
+            maxNum = array[i];
+        }
+        return maxNum;
+    }
+    return minNum;
+}
+int minNum = MinMaxNumbers(minNum);
+int maxNum = MinMaxNumbers(maxNum);
+int diff = maxNum - minNum;
+//int min = MinMaxNumbers(minNumbers);
+//int max = MinMaxNumbers(max);
+
+System.Console.WriteLine($"Сумма элементов, стоящих на нечетных позициях =  {diff}");
+*/
